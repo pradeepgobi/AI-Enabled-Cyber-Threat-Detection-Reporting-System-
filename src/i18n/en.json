@@ -1,0 +1,80 @@
+{
+  "gov_hi": "भारत सरकार / गृह मंत्रालय",
+  "gov_en": "GOVERNMENT OF INDIA / MINISTRY OF HOME AFFAIRS",
+  "language": "Language",
+
+  "home": "Home",
+  "complaint": "Register a Complaint",
+  "track": "Track Your Complaint",
+  "report": "Report & Check Suspect",
+  "volunteer": "Cyber Volunteers",
+  "learning": "Learning Corner",
+  "login": "Contact Us",
+
+  "news_ticker_alert": "⚡ Cybersecurity Alert: Phishing attacks rise by 30% | 🔒 Government releases new cybersecurity guidelines | 🛡️ Protect your online accounts with MFA",
+
+  "hero_title": "Report Cyber Crimes",
+  "hero_subtitle": "Your trusted platform for reporting online fraud, cyberbullying, and other digital crimes.",
+  "file_complaint_now": "File a Complaint Now",
+
+  "register_complaint": "Register a Complaint",
+  "register_complaint_desc": "File a complaint and upload evidence such as URLs, APK files, emails, screenshots, and other proof related to the cybercrime incident.",
+  "start_now": "Start Now",
+
+  "track_complaint": "Track Your Complaint",
+  "track_complaint_desc": "Check the real-time status of your submitted complaint using your complaint ID and registered mobile number.",
+  "track_now": "Track Now",
+
+  "learning_portal": "Learning Portal",
+  "learning_portal_desc": "Explore cybersecurity tips, digital safety guidelines, awareness videos, and educational materials to stay protected online.",
+  "courses": "Cybersecurity Courses",
+  "cyber_awareness": "Cyber Awareness",
+  "attack_prevention": "Attack Prevention",
+  "explore_now": "Explore Now",
+  "gov_links": "Government Links",
+  "gov_links_desc": "Access official portals including DigiLocker, CyberDost, Digital India, and other verified government resources.",
+  "cert": "CERT-In",
+  "cyber_police": "Cyber Cell Police",
+  "nciipc": "NCIIPC",
+
+  "volunteers": "Cyber Volunteers",
+  "volunteer_desc": "Join the Cyber Volunteer Program to help protect the online community and report harmful content.",
+  "join_now": "Join Now",
+
+  "common_cyber_crimes": "Common Cyber Crimes",
+
+  "financial_fraud": "Financial Fraud",
+  "financial_fraud_desc": "Includes UPI scams, online banking fraud, credit/debit card misuse, and fake investment schemes.",
+
+  "identity_theft": "Identity Theft",
+  "identity_theft_desc": "Stealing personal information such as Aadhaar, PAN, or bank details for illegal activities.",
+
+  "cyberstalking": "Cyberstalking",
+  "cyberstalking_desc": "Harassment, threatening messages, or stalking through social media or other online platforms.",
+
+  "malware": "Malware Attacks",
+  "malware_desc": "Viruses, ransomware, spyware, and malicious apps that steal or damage your data.",
+
+  "report_steps": "How to Report a Cybercrime",
+
+  "step1_title": "Collect Evidence",
+  "step1_desc": "Capture screenshots, URLs, emails, phone numbers, or any proof related to the cyber incident.",
+
+  "step2_title": "Submit Complaint",
+  "step2_desc": "Fill out the online complaint form with accurate details and upload supporting evidence.",
+
+  "step3_title": "Verification",
+  "step3_desc": "Authorities will verify your complaint and forward it to the respective cyber cell.",
+
+  "step4_title": "Track Progress",
+  "step4_desc": "Use your complaint ID to monitor the status and receive updates.",
+
+  "quick_links": "Quick Links",
+  "about_us": "About Us",
+  "faqs": "FAQs",
+  "sitemap": "Sitemap",
+
+  "contact_us": "Contact Us",
+  "email": "Email",
+  "phone": "Phone"
+}

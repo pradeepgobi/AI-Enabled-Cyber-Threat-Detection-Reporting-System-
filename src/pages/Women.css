@@ -1,0 +1,187 @@
+/* -----------------------------
+   GLOBAL PAGE STYLES
+------------------------------*/
+.women-container {
+  max-width: 850px;
+  margin: auto;
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #222;
+  font-weight: 700;
+}
+
+.step-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #444;
+  text-align: center;
+}
+
+/* -----------------------------
+   FORM STYLES
+------------------------------*/
+.women-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  transition: 0.2s;
+  background: #fafafa;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #0077ff;
+  background: #fff;
+}
+
+/* -----------------------------
+   TIMING ROW (hour, minute, AM/PM)
+------------------------------*/
+.time-row {
+  display: flex;
+  gap: 10px;
+}
+
+.time-row select,
+.time-row input {
+  flex: 1;
+}
+
+/* -----------------------------
+   BUTTONS
+------------------------------*/
+.btn-primary {
+  background: #0077ff;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: #005fcc;
+}
+
+.btn-secondary {
+  background: #777;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: #5c5c5c;
+}
+
+/* OTP SECTION */
+.otp-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.otp-row input {
+  flex: 1;
+}
+
+.otp-info {
+  background: #f0f9ff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border-left: 4px solid #0077ff;
+  font-size: 14px;
+  color: #004b99;
+}
+
+/* -----------------------------
+   LOADING SPINNER
+------------------------------*/
+.loading {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border: 3px solid #0077ff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------
+   SUBMITTED MESSAGE
+------------------------------*/
+.success-box {
+  padding: 15px;
+  background: #e6ffe6;
+  border-left: 4px solid #00bb00;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #006600;
+}
+
+/* -----------------------------
+   RESPONSIVE
+------------------------------*/
+@media (max-width: 600px) {
+  .women-container {
+    padding: 25px;
+  }
+
+  .time-row {
+    flex-direction: column;
+  }
+
+  .otp-row {
+    flex-direction: column;
+  }
+}

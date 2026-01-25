@@ -1,0 +1,79 @@
+.problem-categories {
+  min-height: 45vh;
+  background-color: #f3f4f6;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+.button-women{
+    width: 100%;
+}
+
+
+.categories-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media(min-width: 768px) {
+  .categories-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.category-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.category-card h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.category-card p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.category-card button {
+  padding: 1rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: large;
+  transition: background-color 0.3s;
+}
+
+.category-card.women button {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.category-card.women button:hover {
+  background-color: #2563eb;
+}
+
+.category-card.crime button {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.category-card.crime button:hover {
+  background-color: #b91c1c;
+}

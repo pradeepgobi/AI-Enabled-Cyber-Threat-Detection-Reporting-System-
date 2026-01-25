@@ -1,0 +1,166 @@
+/* Report.css */
+
+/* Body & Font */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+/* Main container */
+.main-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Section */
+.analysis-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.ai-form {
+  background-color: #bfdbfe; /* Tailwind blue-100 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ai-form h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #374151; /* Tailwind gray-700 */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  border-radius: 0.375rem;
+  font-size: 1rem;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Button colors */
+button.bg-blue-900 {
+  background-color: #1e3a8a;
+  color: #ffffff;
+}
+
+button.bg-blue-900:hover {
+  background-color: #1e40af;
+}
+
+/* Result container */
+.ai-results-container {
+  background-color: #bfdbfe;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #93c5fd;
+  min-height: 100px;
+}
+
+/* Loader */
+.loader {
+  border-top-color: #1e3a8a; /* Tailwind blue-900 */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-width: 0.25rem;
+  border-style: solid;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.bg-red-100 {
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Status Labels */
+.status-label {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  display: inline-block;
+}
+
+/* Phishing/High */
+.status-label.phishing {
+  background-color: #dc2626; /* red-600 */
+  color: #fff;
+}
+
+/* Suspicious/Moderate */
+.status-label.suspicious {
+  background-color: #f59e0b; /* amber-500 */
+  color: #fff;
+}
+
+/* Legitimate/Low */
+.status-label.legitimate {
+  background-color: #16a34a; /* green-600 */
+  color: #fff;
+}
+
+/* Low severity default */
+.status-label.low-severity {
+  background-color: #3b82f6; /* blue-500 */
+  color: #fff;
+}
+
+/* AI Report Box */
+.ai-report pre {
+  background-color: #f3f4f6;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.ai-report h4 {
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
+/* List styling for URLs */
+ul.list-disc {
+  padding-left: 1.25rem;
+}

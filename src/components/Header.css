@@ -1,0 +1,62 @@
+/* --- Main Header --- */
+.main-header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.main-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logos-and-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ✅ Emblem & ICCC logo sizes */
+.emblem-logo {
+    width: 70px;      /* change this to resize */
+    height: auto;
+    object-fit: contain;
+}
+
+.iccc-logo {
+    width: 70px;      /* or different size if needed */
+    height: auto;
+    object-fit: contain;
+}
+
+.portal-titles {
+    line-height: 1.2;
+}
+
+.portal-titles p {
+    margin: 0;
+}
+
+.hindi-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+}
+
+.english-title {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.header-utility {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.login-link {
+    color: #007bff;
+    font-weight: bold;
+}

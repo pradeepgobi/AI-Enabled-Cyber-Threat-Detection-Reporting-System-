@@ -1,0 +1,326 @@
+/* src/pages/CitizenLogin.css */
+
+:root {
+  --cl-bg: #f3f6fb;
+  --cl-card-bg: #ffffff;
+  --cl-border: #cfd8dc;
+  --cl-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  --cl-green-main: #00695c;
+  --cl-green-btn: #2e7d32;
+  --cl-green-light: #e8f5e9;
+
+  --cl-red-main: #c62828;
+  --cl-red-btn: #e53935;
+  --cl-red-light: #ffebee;
+
+  --cl-blue-main: #1976d2;
+  --cl-blue-light: #e3f2fd;
+
+  --cl-radius: 8px;
+  --cl-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Page background */
+
+.cl-page {
+  min-height: 100vh;
+  background: var(--cl-bg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  font-family: var(--cl-font);
+}
+
+/* Main card */
+
+.cl-card {
+  width: 100%;
+  max-width: 1120px;
+  background: var(--cl-card-bg);
+  border-radius: var(--cl-radius);
+  box-shadow: var(--cl-shadow);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  padding: 32px 36px;
+}
+
+/* Left side */
+
+.cl-left {
+  border-right: 1px solid #e0e0e0;
+  padding-right: 24px;
+}
+
+.cl-section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--cl-green-main);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cl-section-title.center {
+  text-align: center;
+}
+
+.cl-warning-text {
+  color: var(--cl-red-main);
+  margin-bottom: 14px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cl-subheading {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 12px 0 6px;
+  color: #37474f;
+}
+
+.cl-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #455a64;
+}
+
+.cl-list li + li {
+  margin-top: 3px;
+}
+
+.cl-list-nested {
+  margin-top: 4px;
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+/* Right side */
+
+.cl-right {
+  padding-left: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cl-right-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Form */
+
+.cl-form {
+  margin-top: 4px;
+}
+
+.cl-form-group {
+  margin-bottom: 14px;
+}
+
+.cl-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #37474f;
+}
+
+.cl-required {
+  color: var(--cl-red-main);
+}
+
+/* Inputs */
+
+.cl-input,
+.cl-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--cl-border);
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.cl-input:focus,
+.cl-select:focus {
+  border-color: var(--cl-blue-main);
+  box-shadow: 0 0 0 1px rgba(25, 118, 210, 0.15);
+}
+
+/* Mobile row */
+
+.cl-mobile-row {
+  display: grid;
+  grid-template-columns: 0.7fr 1.5fr auto;
+  gap: 8px;
+}
+
+.cl-select {
+  min-width: 80px;
+}
+
+/* Buttons */
+
+.cl-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cl-btn-primary {
+  background: var(--cl-blue-main);
+  color: #ffffff;
+}
+
+.cl-btn-primary:disabled {
+  background: #90a4ae;
+  cursor: not-allowed;
+}
+
+.cl-btn-success {
+  background: var(--cl-green-btn);
+  color: #ffffff;
+}
+
+.cl-btn-danger {
+  background: var(--cl-red-btn);
+  color: #ffffff;
+}
+
+.cl-btn-success:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Captcha */
+
+.cl-captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.cl-captcha-box {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--cl-border);
+  font-family: "Courier New", monospace;
+  font-size: 18px;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #eceff1, #f5f5f5);
+  user-select: none;
+}
+
+.cl-captcha-refresh {
+  border: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: #eeeeee;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Alert messages */
+
+.cl-alert {
+  margin-top: 4px;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.cl-alert-success {
+  background: var(--cl-green-light);
+  color: var(--cl-green-btn);
+}
+
+.cl-alert-error {
+  background: var(--cl-red-light);
+  color: var(--cl-red-main);
+}
+
+.cl-alert-info {
+  background: var(--cl-blue-light);
+  color: var(--cl-blue-main);
+}
+
+/* Button row */
+
+.cl-button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cl-forgot-row {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Link-style buttons */
+
+.cl-link-button {
+  border: none;
+  background: none;
+  color: var(--cl-blue-main);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .cl-card {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+
+  .cl-left {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding-right: 0;
+    padding-bottom: 20px;
+    margin-bottom: 16px;
+  }
+
+  .cl-right {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .cl-mobile-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cl-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cl-right-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
