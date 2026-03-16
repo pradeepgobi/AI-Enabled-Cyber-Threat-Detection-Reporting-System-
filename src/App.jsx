@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import { Routes, Route } from "react-router-dom";
 import Complaint from "./pages/complaint";
 import TrackComplaint from "./pages/TrackComplaint";
-import Report from "./pages/report";
+import Report from "./pages/Report";
 import Volunteer from "./pages/Volunteer";
 import Learning from "./pages/Learning";
 
