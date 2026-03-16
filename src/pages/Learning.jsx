@@ -1,6 +1,6 @@
 // src/pages/Learning.jsx
 import React, { useState, useRef } from "react";
-import "./learning.css"; // adjust path as needed
+import "./Learning.css"; // adjust path as needed
 
 const DUMMY_VIDEO_URL =
   "https://www.youtube.com/embed/videoseries?list=PLBf0-G6oFq96S7B91054Jk7S0V124E56P";
