@@ -167,7 +167,7 @@ else:
 # -------------------------------------------------------------------
 # MONGO SETUP
 # -------------------------------------------------------------------
-MONGO_URI = "mongodb://localhost:27017/"
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
 MONGO_DB_NAME = "cybersecurity_portal"
 MONGO_COLLECTION_NAME = "complaints"
 MONGO_VOLUNTEERS_COLLECTION_NAME = "volunteers"
@@ -258,14 +258,17 @@ def load_ml_models():
     except Exception as e:
         print(f"❌ Error loading APK model: {e}")
 
-    try:
-        model_name = "dima806/deepfake_vs_real_image_detection"
-        deepfake_image_model = AutoModelForImageClassification.from_pretrained(
-            model_name
-        )
-        print("✅ Deepfake image model loaded")
-    except Exception as e:
-        print(f"❌ Error loading deepfake image model: {e}")
+    if os.environ.get("LOAD_DEEPFAKE_IMAGE_MODEL", "false").lower() == "true":
+        try:
+            model_name = "dima806/deepfake_vs_real_image_detection"
+            deepfake_image_model = AutoModelForImageClassification.from_pretrained(
+                model_name
+            )
+            print("✅ Deepfake image model loaded")
+        except Exception as e:
+            print(f"❌ Error loading deepfake image model: {e}")
+    else:
+        print("ℹ️ Skipping deepfake image model load at startup")
 
     # Commented out to speed up startup - uncomment if needed
     # try:
