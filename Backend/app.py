@@ -53,16 +53,30 @@ app = Flask(__name__)
 # Secret key for sessions
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "super-secret-dev-key")
 
+default_origins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:3000",
+]
+allowed_origins = [
+    origin.strip()
+    for origin in os.environ.get("ALLOWED_ORIGINS", ",".join(default_origins)).split(",")
+    if origin.strip()
+]
+
 # Allow cookies (sessions) from frontend origins
 CORS(
     app,
-    origins=["http://localhost:5173", "http://localhost:5173", "http://localhost:3000"],
+    origins=allowed_origins,
     supports_credentials=True,
 )
 
-# For local dev you can keep Secure=False; for HTTPS set True
-app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
-app.config["SESSION_COOKIE_SECURE"] = False
+# Render serves HTTPS, so cross-site session cookies need SameSite=None and Secure=True.
+session_cookie_samesite = os.environ.get("SESSION_COOKIE_SAMESITE", "None" if os.environ.get("RENDER") else "Lax")
+session_cookie_secure = os.environ.get("SESSION_COOKIE_SECURE", "true" if os.environ.get("RENDER") else "false")
+
+app.config["SESSION_COOKIE_SAMESITE"] = session_cookie_samesite
+app.config["SESSION_COOKIE_SECURE"] = session_cookie_secure.lower() == "true"
 
 app.config["UPLOAD_FOLDER"] = "uploads"  # for evidence files
 app.config["COMPLAINTS_FOLDER"] = "complaints_data"
@@ -1387,6 +1401,30 @@ The advice should be a clear step-by-step guide on how to:
 
     # Use smaller max_tokens than before to avoid timeouts
     return call_local_llm(prompt, max_tokens=512)
+
+
+# -------------------------------------------------------------------
+# ROOT ENDPOINT
+# -------------------------------------------------------------------
+@app.route("/", methods=["GET"])
+def root():
+    """Root endpoint to verify the API is running."""
+    return jsonify({
+        "status": "online",
+        "message": "🚀 Advanced Cybersecurity Analysis Platform API is running",
+        "version": "1.0.0",
+        "endpoints": {
+            "url_analyser": "/api/url-analyser",
+            "apk_analyser": "/api/apk-analyser",
+            "email_analyser": "/api/email-analyser",
+            "submit_complaint": "/api/submit_complaint",
+            "track_complaint": "/api/get_complaint/<complaint_id>",
+            "admin_login": "/admin-login",
+            "member_login": "/member-login",
+            "volunteer": "/api/volunteer"
+        },
+        "documentation": "For frontend access, please use http://localhost:5174"
+    }), 200
 
 
 # -------------------------------------------------------------------

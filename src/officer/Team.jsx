@@ -1,6 +1,6 @@
 // src/pages/TeamDashboard.jsx
 import React, { useEffect, useState, useCallback } from "react";
-import "./Team.css";
+import "./team.css";
 import TeamChatAssistant from "./TeamChatAssistant.jsx";
 
 // Use 127.0.0.1 to match admin panel BASE

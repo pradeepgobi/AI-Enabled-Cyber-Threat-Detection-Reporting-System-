@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-enabled-cyber-threat-detection-backend
+    env: python
+    rootDir: Backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://ai-enabled-cyber-threat-detection-reporting-system.netlify.app
