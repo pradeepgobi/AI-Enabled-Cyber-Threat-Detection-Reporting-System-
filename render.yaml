@@ -8,9 +8,21 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.13.0
-      - key: FLASK_SECRET_KEY
-        generateValue: true
       - key: FLASK_ENV
         value: production
+      - key: FLASK_SECRET_KEY
+        generateValue: true
       - key: ALLOWED_ORIGINS
         value: https://ai-enabled-cyber-threat-detection-reporting-system.netlify.app
+      
+      # NOTE: Add these secrets in Render Dashboard > Environment > Secrets
+      # Do NOT add actual values here - add them via Render UI
+      - key: OPENROUTER_API_KEY
+      - key: TWILIO_ACCOUNT_SID
+      - key: TWILIO_AUTH_TOKEN
+      - key: TWILIO_PHONE_NUMBER
+      - key: MONGO_URI
+      - key: MONGO_DB_NAME
+      - key: AWS_ACCESS_KEY_ID
+      - key: AWS_SECRET_ACCESS_KEY
+      - key: AWS_REGION
