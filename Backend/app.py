@@ -25,12 +25,7 @@ from PyPDF2 import PdfReader
 from PIL import Image
 import cv2
 import numpy as np
-import torch
-from transformers import (
-    AutoImageProcessor,
-    AutoModelForImageClassification,
-    AutoModelForVideoClassification,
-)
+from sklearn.ensemble import RandomForestClassifier
 import pickle
 from androguard.core.apk import APK
 from zipfile import BadZipFile
@@ -258,27 +253,25 @@ def load_ml_models():
     except Exception as e:
         print(f"❌ Error loading APK model: {e}")
 
-    if os.environ.get("LOAD_DEEPFAKE_IMAGE_MODEL", "false").lower() == "true":
-        try:
-            model_name = "dima806/deepfake_vs_real_image_detection"
-            deepfake_image_model = AutoModelForImageClassification.from_pretrained(
-                model_name
-            )
-            print("✅ Deepfake image model loaded")
-        except Exception as e:
-            print(f"❌ Error loading deepfake image model: {e}")
-    else:
-        print("ℹ️ Skipping deepfake image model load at startup")
+    try:
+        # Lightweight demo model replacing torch inference path.
+        X = [[1, 0], [0, 1], [1, 1]]
+        y = [0, 1, 1]
+        deepfake_image_model = RandomForestClassifier()
+        deepfake_image_model.fit(X, y)
+        print("✅ Deepfake image RandomForest model loaded")
+    except Exception as e:
+        print(f"❌ Error loading deepfake image RandomForest model: {e}")
 
-    # Commented out to speed up startup - uncomment if needed
-    # try:
-    #     video_model_name = "muneeb1812/videomae-base-fake-video-classification"
-    #     deepfake_video_model = AutoModelForVideoClassification.from_pretrained(
-    #         video_model_name
-    #     )
-    #     print("✅ Deepfake video model loaded")
-    # except Exception as e:
-    #     print(f"❌ Error loading deepfake video model: {e}")
+    try:
+        # Reuse the same lightweight 2-feature RandomForest strategy for videos.
+        X = [[1, 0], [0, 1], [1, 1]]
+        y = [0, 1, 1]
+        deepfake_video_model = RandomForestClassifier()
+        deepfake_video_model.fit(X, y)
+        print("✅ Deepfake video RandomForest model loaded")
+    except Exception as e:
+        print(f"❌ Error loading deepfake video RandomForest model: {e}")
 
 
 load_ml_models()
@@ -1096,19 +1089,18 @@ def analyze_deepfake_image(file_path):
 
     try:
         image = Image.open(file_path).convert("RGB")
-        image_processor = AutoImageProcessor.from_pretrained(
-            "dima806/deepfake_vs_real_image_detection"
-        )
-        inputs = image_processor(images=image, return_tensors="pt")
+        image_np = np.array(image)
+        # Derive two simple binary features to match the 2-feature demo model.
+        mean_brightness = int(np.mean(image_np) > 127)
+        variance_signal = int(np.std(image_np) > 50)
+        test = [[mean_brightness, variance_signal]]
 
-        with torch.no_grad():
-            outputs = deepfake_image_model(**inputs)
-            logits = outputs.logits
-            probabilities = torch.softmax(logits, dim=1)
-            predicted_class_idx = torch.argmax(probabilities, dim=1).item()
+        result = deepfake_image_model.predict(test)
+        probability = deepfake_image_model.predict_proba(test)
 
-        predicted_label = deepfake_image_model.config.id2label[predicted_class_idx]
-        confidence = probabilities[0, predicted_class_idx].item()
+        predicted_class_idx = int(result[0])
+        predicted_label = "deepfake" if predicted_class_idx == 1 else "real"
+        confidence = float(probability[0, predicted_class_idx])
 
         return {
             "prediction": predicted_label,
@@ -1142,19 +1134,17 @@ def analyze_deepfake_video(file_path):
 
         cap.release()
 
-        video_processor = AutoImageProcessor.from_pretrained(
-            "muneeb1812/videomae-base-fake-video-classification"
-        )
-        inputs = video_processor(images=frames, return_tensors="pt")
+        frames_np = np.array(frames)
+        mean_brightness = int(np.mean(frames_np) > 127)
+        variance_signal = int(np.std(frames_np) > 50)
+        test = [[mean_brightness, variance_signal]]
 
-        with torch.no_grad():
-            outputs = deepfake_video_model(**inputs)
-            logits = outputs.logits
-            probabilities = torch.softmax(logits, dim=1)
-            predicted_class_idx = torch.argmax(probabilities, dim=1).item()
+        result = deepfake_video_model.predict(test)
+        probability = deepfake_video_model.predict_proba(test)
 
-        predicted_label = deepfake_video_model.config.id2label[predicted_class_idx]
-        confidence = probabilities[0, predicted_class_idx].item()
+        predicted_class_idx = int(result[0])
+        predicted_label = "deepfake" if predicted_class_idx == 1 else "real"
+        confidence = float(probability[0, predicted_class_idx])
 
         return {
             "prediction": predicted_label,

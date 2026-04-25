@@ -12,7 +12,6 @@ PyPDF2
 Pillow
 opencv-python
 numpy
-torch
 transformers
 pickle-mixin
 androguard
