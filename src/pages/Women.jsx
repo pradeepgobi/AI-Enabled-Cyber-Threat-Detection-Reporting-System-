@@ -117,7 +117,7 @@ export default function Women() {
       setOtpVerified(true);
 
       // Submit complaint
-      const submitResp = await axios.post(`${import.meta.env.VITE_API_URL}/submit-complaint-women", {
+      const submitResp = await axios.post(`${import.meta.env.VITE_API_URL}/submit-complaint-women`, {
         ...formData,
         phone
       });

@@ -103,7 +103,7 @@ export default function TrackComplaint() {
 
           {results && (
             <div id="results-container">
-              <h3 style={{ borderBottom: "2px solid var(--border-color)`, paddingBottom: ".5rem", marginBottom: "1rem" }}>
+              <h3 style={{ borderBottom: "2px solid var(--border-color)", paddingBottom: ".5rem", marginBottom: "1rem" }}>
                 Complaint Details
               </h3>
 
