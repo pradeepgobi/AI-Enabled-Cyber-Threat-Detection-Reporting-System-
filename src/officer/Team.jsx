@@ -4,7 +4,7 @@ import "./team.css";
 import TeamChatAssistant from "./TeamChatAssistant.jsx";
 
 // Use 127.0.0.1 to match admin panel BASE
-const API_BASE_URL = "http://127.0.0.1:5006";
+const API_BASE_URL = "http://52.66.205.11:5000";
 
 const TeamDashboard = () => {
   // Team name should be set at login and saved to localStorage:

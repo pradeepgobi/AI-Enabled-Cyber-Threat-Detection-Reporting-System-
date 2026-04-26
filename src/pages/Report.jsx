@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Backend API URL from environment variable
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:5006";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://52.66.205.11:5000";
 
 export default function Report() {
   const [urlInput, setUrlInput] = useState("");

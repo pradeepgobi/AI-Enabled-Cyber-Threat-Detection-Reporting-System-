@@ -13,7 +13,7 @@
     "@google/generative-ai": "^0.24.1",
     "axios": "^1.13.2",
     "i18next": "^25.7.1",
-    "jspdf": "^3.0.4",
+    "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.2",
     "libphonenumber-js": "^1.12.31",
     "lucide-react": "^0.555.0",

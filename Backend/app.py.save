@@ -12,31 +12,6 @@ from datetime import datetime
 import pandas as pd
 import re
 import requests
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-
-
-def ask_ai(prompt):
-    try:
-        url = "https://openrouter.ai/api/v1/chat/completions"
-
-        headers = {
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-            "Content-Type": "application/json"
-        }
-
-        data = {
-            "model": "openai/gpt-3.5-turbo",
-            "messages": [
-                {"role": "user", "content": prompt}
-            ]
-        }
-
-        res = requests.post(url, headers=headers, json=data, timeout=15)
-        return res.json()["choices"][0]["message"]["content"]
-
-    except Exception as e:
-        return f"AI Error: {str(e)}"
-
 import whois
 import dns.resolver
 from urllib.parse import urlparse, parse_qs
@@ -58,6 +33,7 @@ import tldextract
 import ipaddress
 from pymongo import MongoClient
 import random
+from twilio.rest import Client
 import bcrypt
 from dotenv import load_dotenv
 
@@ -109,19 +85,94 @@ os.makedirs(uploads_abs, exist_ok=True)
 os.makedirs(reports_abs, exist_ok=True)
 
 # -------------------------------------------------------------------
+# LOCAL LLM CONFIG (OLLAMA)
+# -------------------------------------------------------------------
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
+LOCAL_LLM_MODEL = os.environ.get("LOCAL_LLM_MODEL", "openai/gpt-3.5-turbo")
+
+
+def call_local_llm(prompt, max_tokens=256):
+    try:
+        if len(prompt) > 8000:
+            prompt = prompt[:8000] + "\n\n[Prompt truncated due to length]\n"
+
+        payload = {
+            "model": LOCAL_LLM_MODEL,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "stream": False,
+            "options": {
+                "num_predict": max_tokens,
+                "num_ctx": 2048,
+            },
+        }
+
+        resp = requests.post(f"{OLLAMA_BASE_URL}/api/chat", json=payload, timeout=180)
+
+        if resp.status_code != 200:
+            print("[LOCAL LLM] Error:", resp.status_code, resp.text[:300])
+            return f"AI Error ({resp.status_code}): {resp.text[:200]}"
+
+        data = resp.json()
+        msg = data.get("message", {})
+        content = msg.get("content", "").strip()
+        if not content:
+            return "AI response was empty."
+        return content
+
+    except requests.exceptions.ReadTimeout:
+        print("[LOCAL LLM] Read timeout – model took too long to respond")
+        return "AI Error: The local AI model took too long to respond (timeout). Try again with a simpler query."
+    except Exception as e:
+        print("[LOCAL LLM] Exception:", e)
+        return f"AI Error: {str(e)[:200]}"
+
+
+# -------------------------------------------------------------------
+# TWILIO CONFIG
+# -------------------------------------------------------------------
+TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID", "")
+TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN", "")
+TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER", "")
+
+twilio_client = None
+if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
+    twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+else:
+    print("⚠️ Twilio credentials not set - SMS features will be disabled")
+
+
+def send_sms_otp(phone, otp, context="verification"):
+    """
+    Safely send OTP via Twilio. Returns True if sent, False otherwise.
+    Never raises — always falls back gracefully.
+    """
+    if not twilio_client or not TWILIO_PHONE_NUMBER:
+        print(f"⚠️  Twilio not configured. [{context}] OTP for {phone}: {otp}")
+        return False
+    try:
+        message = twilio_client.messages.create(
+            body=f"Your OTP for {context} is {otp}. - Kongunadu Team, Six Strangers.",
+            from_=TWILIO_PHONE_NUMBER,
+            to=phone,
+        )
+        print(f"✅ Twilio SID: {message.sid}")
+        return True
+    except Exception as twilio_error:
+        print(f"⚠️  Twilio SMS failed: {twilio_error}")
+        print(f"💡 Development OTP for {phone}: {otp}")
+        return False
+
+
+# -------------------------------------------------------------------
 # MONGO SETUP
 # -------------------------------------------------------------------
 MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
 MONGO_DB_NAME = "cybersecurity_portal"
 
 try:
-    mongo_client = MongoClient(
-        MONGO_URI,
-        serverSelectionTimeoutMS=1500,
-        connectTimeoutMS=1500,
-        socketTimeoutMS=1500,
-    )
-    mongo_client.admin.command("ping")
+    mongo_client = MongoClient(MONGO_URI)
     mongo_db = mongo_client[MONGO_DB_NAME]
 
     complaints_collection = mongo_db["complaints"]
@@ -782,7 +833,6 @@ def analyze_phishing_document(file_path, filename):
         if filename.lower().endswith(".pdf"):
             pdf_reader = PdfReader(file_path)
             for page in pdf_reader.pages:
-                
                 text += page.extract_text() or ""
         elif filename.lower().endswith((".png", ".jpg", ".jpeg")):
             pil_image = Image.open(file_path)
@@ -984,7 +1034,7 @@ def get_ai_summary(complaint_data):
     PHISHING - HIGH. Core: User clicked a link in a suspicious email. Verdict: Typosquatting detected, High-Risk URL.
     """
 
-    return ask_ai(summary_prompt)
+    return call_local_llm(summary_prompt, max_tokens=150)
 
 
 def get_ai_assistance(attack_type, scenario, analysis_results):
@@ -1097,7 +1147,7 @@ The advice should be a clear step-by-step guide on how to:
 4. Mention the option to close the case once they are comfortable.
 """
 
-    return ask_ai(prompt)
+    return call_local_llm(prompt, max_tokens=512)
 
 
 # -------------------------------------------------------------------
@@ -1119,7 +1169,7 @@ def root():
             "member_login": "/member-login",
             "volunteer": "/api/volunteer"
         },
-        "documentation": "Production API running on AWS EC2"
+        "documentation": "For frontend access, please use http://localhost:5174"
     }), 200
 
 
@@ -1515,7 +1565,7 @@ Requirements:
 - Be concise but practical. Avoid generic theory; focus on THIS case context.
 """
 
-        ai_response = ask_ai(prompt)
+        ai_response = call_local_llm(prompt, max_tokens=256)
         return jsonify({"success": True, "guidance": ai_response})
 
     except Exception as e:
@@ -1523,7 +1573,7 @@ Requirements:
 
 
 # -------------------------------------------------------------------
-# OTP SYSTEM
+# OTP SYSTEM  ← FIXED: both routes now use send_sms_otp() helper
 # -------------------------------------------------------------------
 otp_storage = {}    # phone -> otp  (for women/complaint flow)
 otp_verified = {}   # phone -> True
@@ -1550,6 +1600,8 @@ def send_otp():
         otp = generate_otp()
         otp_storage[phone] = otp
         print(f"🔐 Generated complaint OTP for {phone}: {otp}")
+
+        send_sms_otp(phone, otp, context="complaint verification")
 
         return jsonify({"status": "success", "message": "OTP sent successfully", "dev_otp": otp})
     except Exception as e:
@@ -1599,6 +1651,8 @@ def send_user_otp():
         user_otp_storage[phone] = otp
         print(f"[USER OTP GENERATED] {phone} → {otp}")
 
+        send_sms_otp(phone, otp, context="user verification")
+
         return jsonify({"status": "success", "message": "User OTP sent successfully", "dev_otp": otp})
 
     except Exception as e:
@@ -1638,34 +1692,26 @@ def verify_user_otp():
 @app.route("/save-user", methods=["POST"])
 def save_user():
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or {}
 
-        name = data.get("name")
-        phone = data.get("phone")
+        if not data.get("name") or not data.get("phone"):
+            return jsonify({"success": False, "message": "Missing fields"}), 400
 
-        if not name or not phone:
-            return jsonify({"success": False, "message": "Missing data"}), 400
-
-        if user_collection is None:
-            return jsonify({"success": True, "message": "DB skipped"})
-
-        existing = user_collection.find_one({"phone": phone})
-
-        if existing:
-            return jsonify({"success": True, "message": "User already exists"})
-
-        user_data = {
-            "name": name,
-            "phone": phone,
+        entry = {
+            "name": data["name"],
+            "phone": data["phone"],
             "created_at": datetime.utcnow()
         }
 
-        user_collection.insert_one(user_data)
+        if user_collection is None:
+            print("⚠️ User save skipped: MongoDB is unavailable")
+            return jsonify({"success": True, "message": "User login completed, but profile was not saved."})
 
-        return jsonify({"success": True, "message": "User saved successfully"})
+        user_collection.insert_one(entry)
+        return jsonify({"success": True, "message": "User saved successfully!"})
     except Exception as e:
-        print("Save user error:", e)
-        return jsonify({"success": True, "message": "Saved skipped"})
+        print("Error saving user:", e)
+        return jsonify({"success": True, "message": "User login completed, but profile save failed."})
 
 
 # -------------------------------------------------------------------
@@ -1702,7 +1748,7 @@ Return only the JSON array, nothing else.
 """
 
     try:
-        ai_text = ask_ai(prompt)
+        ai_text = call_local_llm(prompt, max_tokens=256)
 
         match = re.search(r"\[.*\]", ai_text, re.DOTALL)
         if match:
@@ -2050,8 +2096,10 @@ def team_stats():
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     print("=" * 80)
-    print("      ADVANCED CYBERSECURITY ANALYSIS PLATFORM")
+    print("      ADVANCED CYBERSECURITY ANALYSIS PLATFORM (LOCAL LLM)")
     print("=" * 80)
+    print(f"\n🔌 Ollama base URL: {OLLAMA_BASE_URL}")
+    print(f"🤖 Local LLM model: {LOCAL_LLM_MODEL}")
     print("🚀 Starting Flask server on http://0.0.0.0:5000")
     print("=" * 80 + "\n")
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

@@ -5,7 +5,7 @@ import autoTable from "jspdf-autotable";
 import "./complaint.css"; // your CSS file
 
 // Centralize API base URL so it's easier to change
-const API_BASE_URL = "http://127.0.0.1:5006";
+const API_BASE_URL = "http://52.66.205.11:5000";
 
 export default function ComplaintPage() {
   // --- State Management ---

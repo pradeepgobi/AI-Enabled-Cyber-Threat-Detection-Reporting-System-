@@ -1,0 +1,278 @@
+⚠️ Twilio credentials not set - SMS features will be disabled
+✅ MongoDB connected to database: cybersecurity_portal
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+================================================================================
+      ADVANCED CYBERSECURITY ANALYSIS PLATFORM (LOCAL LLM)
+================================================================================
+
+🔌 Ollama base URL: http://127.0.0.1:11434
+🤖 Local LLM model: openai/gpt-3.5-turbo
+🚀 Starting Flask server on http://0.0.0.0:5000
+================================================================================
+
+ * Serving Flask app 'app'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.33.129:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+⚠️ Twilio credentials not set - SMS features will be disabled
+✅ MongoDB connected to database: cybersecurity_portal
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+================================================================================
+      ADVANCED CYBERSECURITY ANALYSIS PLATFORM (LOCAL LLM)
+================================================================================
+
+🔌 Ollama base URL: http://127.0.0.1:11434
+🤖 Local LLM model: openai/gpt-3.5-turbo
+🚀 Starting Flask server on http://0.0.0.0:5000
+================================================================================
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 377-086-601
+[2026-04-25 13:57:49 +0000] [2163] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 13:57:49 +0000] [2163] [INFO] Listening at: http://0.0.0.0:5000 (2163)
+[2026-04-25 13:57:49 +0000] [2163] [INFO] Using worker: sync
+[2026-04-25 13:57:49 +0000] [2164] [INFO] Booting worker with pid: 2164
+⚠️ Twilio credentials not set - SMS features will be disabled
+✅ MongoDB connected to database: cybersecurity_portal
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 14:03:47 +0000] [2163] [INFO] Handling signal: hup
+[2026-04-25 14:03:47 +0000] [2163] [INFO] Hang up: Master
+[2026-04-25 14:03:47 +0000] [2734] [INFO] Booting worker with pid: 2734
+[2026-04-25 14:03:47 +0000] [2163] [ERROR] Worker (pid:2164) was sent SIGHUP!
+⚠️ Twilio credentials not set - SMS features will be disabled
+✅ MongoDB connected to database: cybersecurity_portal
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 14:06:11 +0000] [2796] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 14:06:11 +0000] [2796] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 14:06:11 +0000] [2796] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 14:06:12 +0000] [2796] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 14:06:12 +0000] [2796] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 14:06:13 +0000] [2796] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 14:06:13 +0000] [2796] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 14:06:14 +0000] [2796] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 14:06:14 +0000] [2796] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 14:06:15 +0000] [2796] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 14:06:15 +0000] [2796] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 14:06:16 +0000] [2796] [ERROR] Can't connect to ('0.0.0.0', 5000)
+[2026-04-25 14:13:57 +0000] [2734] [INFO] Worker exiting (pid: 2734)
+[2026-04-25 14:13:57 +0000] [2163] [INFO] Handling signal: term
+[2026-04-25 14:13:57 +0000] [2163] [INFO] Shutting down: Master
+[2026-04-25 14:14:09 +0000] [3096] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 14:14:09 +0000] [3096] [INFO] Listening at: http://0.0.0.0:5000 (3096)
+[2026-04-25 14:14:09 +0000] [3096] [INFO] Using worker: sync
+[2026-04-25 14:14:09 +0000] [3097] [INFO] Booting worker with pid: 3097
+[2026-04-25 14:14:09 +0000] [3098] [INFO] Booting worker with pid: 3098
+⚠️ Twilio credentials not set - SMS features will be disabled
+✅ MongoDB connected to database: cybersecurity_portal
+⚠️ Twilio credentials not set - SMS features will be disabled
+✅ MongoDB connected to database: cybersecurity_portal
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 15:47:43 +0000] [3097] [INFO] Worker exiting (pid: 3097)
+[2026-04-25 15:47:43 +0000] [3098] [INFO] Worker exiting (pid: 3098)
+[2026-04-25 15:47:43 +0000] [3096] [INFO] Handling signal: term
+[2026-04-25 15:47:43 +0000] [7314] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 15:47:43 +0000] [7314] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 15:47:43 +0000] [7314] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 15:47:44 +0000] [7314] [INFO] Listening at: http://0.0.0.0:5000 (7314)
+[2026-04-25 15:47:44 +0000] [7314] [INFO] Using worker: sync
+[2026-04-25 15:47:44 +0000] [7315] [INFO] Booting worker with pid: 7315
+[2026-04-25 15:47:44 +0000] [3096] [INFO] Shutting down: Master
+[2026-04-25 15:47:44 +0000] [7316] [INFO] Booting worker with pid: 7316
+✅ MongoDB connected to database: cybersecurity_portal✅ MongoDB connected to database: cybersecurity_portal
+
+✅ Phishing model loaded✅ Phishing model loaded
+
+✅ APK model loaded✅ APK model loaded
+
+✅ Deepfake image RandomForest model loaded✅ Deepfake image RandomForest model loaded
+
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 15:50:52 +0000] [7316] [INFO] Worker exiting (pid: 7316)
+[2026-04-25 15:50:52 +0000] [7314] [INFO] Handling signal: term
+[2026-04-25 15:50:52 +0000] [7315] [INFO] Worker exiting (pid: 7315)
+[2026-04-25 15:50:53 +0000] [7314] [INFO] Shutting down: Master
+[2026-04-25 16:09:02 +0000] [8083] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 16:09:02 +0000] [8083] [INFO] Listening at: http://0.0.0.0:5000 (8083)
+[2026-04-25 16:09:02 +0000] [8083] [INFO] Using worker: sync
+[2026-04-25 16:09:02 +0000] [8084] [INFO] Booting worker with pid: 8084
+[2026-04-25 16:09:02 +0000] [8085] [INFO] Booting worker with pid: 8085
+✅ MongoDB connected to database: cybersecurity_portal✅ MongoDB connected to database: cybersecurity_portal
+
+✅ Phishing model loaded
+✅ Phishing model loaded
+✅ APK model loaded✅ APK model loaded
+
+✅ Deepfake image RandomForest model loaded✅ Deepfake image RandomForest model loaded
+
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 16:27:35 +0000] [8083] [INFO] Handling signal: term
+[2026-04-25 16:27:35 +0000] [8085] [INFO] Worker exiting (pid: 8085)
+[2026-04-25 16:27:35 +0000] [8084] [INFO] Worker exiting (pid: 8084)
+[2026-04-25 16:27:35 +0000] [8788] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 16:27:35 +0000] [8788] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 16:27:35 +0000] [8788] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 16:27:36 +0000] [8083] [INFO] Shutting down: Master
+[2026-04-25 16:27:36 +0000] [8788] [INFO] Listening at: http://0.0.0.0:5000 (8788)
+[2026-04-25 16:27:36 +0000] [8788] [INFO] Using worker: sync
+[2026-04-25 16:27:36 +0000] [8789] [INFO] Booting worker with pid: 8789
+[2026-04-25 16:27:36 +0000] [8790] [INFO] Booting worker with pid: 8790
+✅ MongoDB connected to database: cybersecurity_portal✅ MongoDB connected to database: cybersecurity_portal
+
+✅ Phishing model loaded
+✅ Phishing model loaded
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 16:29:25 +0000] [8789] [INFO] Worker exiting (pid: 8789)
+[2026-04-25 16:29:25 +0000] [8788] [INFO] Handling signal: term
+[2026-04-25 16:29:25 +0000] [8790] [INFO] Worker exiting (pid: 8790)
+[2026-04-25 16:29:25 +0000] [8788] [INFO] Shutting down: Master
+[2026-04-25 16:29:35 +0000] [8861] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 16:29:35 +0000] [8861] [INFO] Listening at: http://0.0.0.0:5000 (8861)
+[2026-04-25 16:29:35 +0000] [8861] [INFO] Using worker: sync
+[2026-04-25 16:29:35 +0000] [8862] [INFO] Booting worker with pid: 8862
+[2026-04-25 16:29:35 +0000] [8863] [INFO] Booting worker with pid: 8863
+✅ MongoDB connected to database: cybersecurity_portal✅ MongoDB connected to database: cybersecurity_portal
+
+✅ Phishing model loaded✅ Phishing model loaded
+
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded✅ Deepfake image RandomForest model loaded
+
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-25 16:46:01 +0000] [8863] [INFO] Worker exiting (pid: 8863)
+[2026-04-25 16:46:01 +0000] [8862] [INFO] Worker exiting (pid: 8862)
+[2026-04-25 16:46:01 +0000] [8861] [INFO] Handling signal: term
+[2026-04-25 16:46:02 +0000] [9536] [INFO] Starting gunicorn 23.0.0
+[2026-04-25 16:46:02 +0000] [9536] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-04-25 16:46:02 +0000] [9536] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-04-25 16:46:02 +0000] [8861] [INFO] Shutting down: Master
+[2026-04-25 16:46:03 +0000] [9536] [INFO] Listening at: http://0.0.0.0:5000 (9536)
+[2026-04-25 16:46:03 +0000] [9536] [INFO] Using worker: sync
+[2026-04-25 16:46:03 +0000] [9537] [INFO] Booting worker with pid: 9537
+[2026-04-25 16:46:03 +0000] [9538] [INFO] Booting worker with pid: 9538
+✅ MongoDB connected to database: cybersecurity_portal✅ MongoDB connected to database: cybersecurity_portal
+
+✅ Phishing model loaded
+✅ Phishing model loaded
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded✅ Deepfake video RandomForest model loaded
+
+[2026-04-25 16:57:39 +0000] [9538] [INFO] Parent changed, shutting down: <Worker 9538>
+[2026-04-25 16:57:39 +0000] [9538] [INFO] Worker exiting (pid: 9538)
+[2026-04-25 16:57:39 +0000] [9537] [INFO] Parent changed, shutting down: <Worker 9537>
+[2026-04-25 16:57:39 +0000] [9537] [INFO] Worker exiting (pid: 9537)
+[2026-04-26 08:13:14 +0000] [38423] [INFO] Starting gunicorn 23.0.0
+[2026-04-26 08:13:14 +0000] [38423] [INFO] Listening at: http://0.0.0.0:5000 (38423)
+[2026-04-26 08:13:14 +0000] [38423] [INFO] Using worker: sync
+[2026-04-26 08:13:14 +0000] [38424] [INFO] Booting worker with pid: 38424
+[2026-04-26 08:13:14 +0000] [38425] [INFO] Booting worker with pid: 38425
+❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edc91efa74114021989064, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edc91e86f743c0c65abae5, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>
+
+✅ Phishing model loaded✅ Phishing model loaded
+
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-26 08:14:44 +0000] [38423] [INFO] Handling signal: hup
+[2026-04-26 08:14:44 +0000] [38423] [INFO] Hang up: Master
+[2026-04-26 08:14:44 +0000] [38423] [ERROR] Worker (pid:38424) was sent SIGHUP!
+[2026-04-26 08:14:44 +0000] [38423] [ERROR] Worker (pid:38425) was sent SIGHUP!
+[2026-04-26 08:14:44 +0000] [38488] [INFO] Booting worker with pid: 38488
+[2026-04-26 08:14:44 +0000] [38489] [INFO] Booting worker with pid: 38489
+❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edc97619bfe307c17ca7f5, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edc9769836e113587f2855, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>
+
+✅ Phishing model loaded
+✅ Phishing model loaded
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-26 08:37:50 +0000] [38488] [INFO] Worker exiting (pid: 38488)
+[2026-04-26 08:37:50 +0000] [38489] [INFO] Worker exiting (pid: 38489)
+[2026-04-26 08:37:50 +0000] [38423] [INFO] Handling signal: term
+[2026-04-26 08:37:50 +0000] [38423] [ERROR] Worker (pid:38488) was sent SIGTERM!
+[2026-04-26 08:37:50 +0000] [38423] [ERROR] Worker (pid:38489) was sent SIGTERM!
+[2026-04-26 08:37:50 +0000] [38423] [INFO] Shutting down: Master
+[2026-04-26 08:37:50 +0000] [39201] [INFO] Starting gunicorn 23.0.0
+[2026-04-26 08:37:50 +0000] [39201] [INFO] Listening at: http://0.0.0.0:5000 (39201)
+[2026-04-26 08:37:50 +0000] [39201] [INFO] Using worker: sync
+[2026-04-26 08:37:50 +0000] [39202] [INFO] Booting worker with pid: 39202
+[2026-04-26 08:37:50 +0000] [39203] [INFO] Booting worker with pid: 39203
+❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edcee0bf8028e3a435f484, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edcee060e319ea3a21025e, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>
+
+✅ Phishing model loaded
+✅ Phishing model loaded
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+[2026-04-26 08:38:54 +0000] [39201] [CRITICAL] WORKER TIMEOUT (pid:39202)
+[2026-04-26 08:38:54 +0000] [39202] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2026-04-26 08:38:54 +0000] [39202] [INFO] Worker exiting (pid: 39202)
+[2026-04-26 08:38:54 +0000] [39218] [INFO] Booting worker with pid: 39218
+❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69edcf208846ad1db811e382, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>
+✅ Phishing model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded

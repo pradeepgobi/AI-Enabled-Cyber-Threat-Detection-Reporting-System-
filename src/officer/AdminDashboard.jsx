@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./AdminDashboard.css";
 
-const BASE = "http://127.0.0.1:5006";
+const BASE = "http://52.66.205.11:5000";
 const INITIAL_TEAMS = ["team1", "team2", "team3", "team4", "team5"];
 
 export default function AdminDashboard() {

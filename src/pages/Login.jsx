@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 
-const API_BASE_URL = "http://localhost:5006";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Generate Captcha
 const generateCaptcha = () => {
@@ -72,7 +72,7 @@ const CitizenLogin = () => {
     try {
       setIsSendingOtp(true);
 
-      const res = await fetch(`${API_BASE_URL}/send-user-otp`, {
+      const res = await fetch(`${API_URL}/send-user-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -86,6 +86,11 @@ const CitizenLogin = () => {
       if (data.status === "success") {
         setSuccess("OTP sent successfully.");
         setResendIn(60);
+
+        // Auto-fill OTP in development if backend returns dev_otp
+        if (data.dev_otp) {
+          setOtp(data.dev_otp);
+        }
       } else {
         setError(data.message || "Failed to send OTP.");
       }
@@ -116,7 +121,7 @@ const CitizenLogin = () => {
       setIsVerifying(true);
 
       // 1️⃣ Verify OTP
-      const resOtp = await fetch(`${API_BASE_URL}/verify-user-otp`, {
+      const resOtp = await fetch(`${API_URL}/verify-user-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -132,7 +137,7 @@ const CitizenLogin = () => {
       }
 
       // 2️⃣ Save User Data
-      const resSave = await fetch(`${API_BASE_URL}/save-user`, {
+      const resSave = await fetch(`${API_URL}/save-user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
