@@ -12,7 +12,7 @@ export default function MemberDashboard() {
   const [activeMenu, setActiveMenu] = useState("complaints");
   const [loading, setLoading] = useState(false);
   const [rawResponse, setRawResponse] = useState(null);
-  const BASE = "http://localhost:5006";
+  const BASE = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (team) {
@@ -127,7 +127,7 @@ export default function MemberDashboard() {
           <label style={{ display: "block", fontSize: 13, marginBottom: 6 }}>Your Team (edit if incorrect)</label>
           <input
             type="text"
-            placeholder="Enter exact team name (e.g., Phishing Team)"
+            placeholder="Enter exact team name (e.g., Phishing Team)`
             value={team}
             onChange={(e) => setTeam(e.target.value)}
             style={{ width: "100%", marginBottom: 8 }}
@@ -165,7 +165,7 @@ export default function MemberDashboard() {
 
         {activeMenu === "complaints" && (
           <div className="card fade-in">
-            <h3>Assigned Complaints {loading ? "(loading...)" : ""}</h3>
+            <h3>Assigned Complaints {loading ? "(loading...)` : ""}</h3>
 
             {!team && (
               <div style={{ background: "#fffbe6", padding: 12, borderRadius: 6, marginBottom: 12 }}>

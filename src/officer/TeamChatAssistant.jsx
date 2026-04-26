@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./TeamChatAssistant.css";
 
-const API_BASE_URL = "http://localhost:5006";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const TeamChatAssistant = ({ complaintId, attackType }) => {
   const [messages, setMessages] = useState([

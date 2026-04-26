@@ -76,8 +76,12 @@ default_origins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
-    r"http://\d+\.\d+\.\d+\.\d+:5173",
-    r"http://\d+\.\d+\.\d+\.\d+:5174",
+
+    # ✅ Netlify frontend
+    "https://ai-enabled-cyber-threat-detection-reporting-system.netlify.app",
+
+    # ✅ EC2 public access (optional)
+    "http://52.66.205.11:5000"
 ]
 allowed_origins = [
     origin.strip()

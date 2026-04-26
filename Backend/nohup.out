@@ -276,3 +276,7 @@ SystemExit: 1
 ✅ APK model loaded
 ✅ Deepfake image RandomForest model loaded
 ✅ Deepfake video RandomForest model loaded
+[2026-04-26 09:43:44 +0000] [39218] [INFO] Worker exiting (pid: 39218)
+[2026-04-26 09:43:44 +0000] [39203] [INFO] Worker exiting (pid: 39203)
+[2026-04-26 09:43:44 +0000] [39201] [INFO] Handling signal: term
+[2026-04-26 09:43:45 +0000] [39201] [INFO] Shutting down: Master

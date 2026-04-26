@@ -29,7 +29,7 @@ export default function TrackComplaint() {
     setResults(null);
 
     try {
-      const resp = await fetch(`http://localhost:5006/api/get_complaint/${encodeURIComponent(id)}`);
+      const resp = await fetch(`${import.meta.env.VITE_API_URL}/api/get_complaint/${encodeURIComponent(id)}`);
       const data = await resp.json().catch(() => ({}));
 
       if (resp.ok && data.success && data.complaint) {
@@ -76,7 +76,7 @@ export default function TrackComplaint() {
     <div className="track-page-root">
       <main className="main-content">
         <div className="track-container">
-          <h2 style={{ textAlign: "center", marginBottom: "1.5rem", color: "var(--primary-color)" }}>
+          <h2 style={{ textAlign: "center", marginBottom: "1.5rem", color: "var(--primary-color)` }}>
             Track Your Complaint Status
           </h2>
 
@@ -103,7 +103,7 @@ export default function TrackComplaint() {
 
           {results && (
             <div id="results-container">
-              <h3 style={{ borderBottom: "2px solid var(--border-color)", paddingBottom: ".5rem", marginBottom: "1rem" }}>
+              <h3 style={{ borderBottom: "2px solid var(--border-color)`, paddingBottom: ".5rem", marginBottom: "1rem" }}>
                 Complaint Details
               </h3>
 
@@ -157,7 +157,7 @@ export default function TrackComplaint() {
                 <div className="completion-report">
                   <h4>Completion Report:</h4>
                   <a
-                    href={`http://localhost:5006/${results.completion_report}`}
+                    href={`${import.meta.env.VITE_API_URL}/${results.completion_report}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

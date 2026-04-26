@@ -86,7 +86,7 @@ export default function Women() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:5006/send-otp", { phone });
+      await axios.post(`${import.meta.env.VITE_API_URL}/send-otp`, { phone });
       setOtpSent(true);
       alert("OTP sent successfully!");
     } catch (err) {
@@ -104,7 +104,7 @@ export default function Women() {
 
     try {
       setLoading(true);
-      const verifyResp = await axios.post("http://localhost:5006/verify-otp", {
+      const verifyResp = await axios.post(`${import.meta.env.VITE_API_URL}/verify-otp`, { phone, otp: formData.otp });
         phone,
         otp: formData.otp
       });
@@ -117,7 +117,7 @@ export default function Women() {
       setOtpVerified(true);
 
       // Submit complaint
-      const submitResp = await axios.post("http://localhost:5006/submit-complaint-women", {
+      const submitResp = await axios.post(`${import.meta.env.VITE_API_URL}/submit-complaint-women", {
         ...formData,
         phone
       });
@@ -196,7 +196,7 @@ export default function Women() {
   });
 
   doc.setFontSize(16);
-  doc.text("FIRST INFORMATION REPORT (FIR)", pageWidth / 2, 88, {
+  doc.text("FIRST INFORMATION REPORT (FIR)`, pageWidth / 2, 88, {
     align: "center",
   });
 
@@ -306,7 +306,7 @@ export default function Women() {
   y += 20;
   doc.setFontSize(10);
 
-  doc.text("(Digitally Signed by Complainant)", 20, y);
+  doc.text("(Digitally Signed by Complainant)`, 20, y);
   doc.line(pageWidth - 140, y - 5, pageWidth - 20, y - 5);
 
   doc.text("Authorized Signatory / Duty Officer", pageWidth - 140, y + 10);
