@@ -76,7 +76,7 @@ export default function TrackComplaint() {
     <div className="track-page-root">
       <main className="main-content">
         <div className="track-container">
-          <h2 style={{ textAlign: "center", marginBottom: "1.5rem", color: "var(--primary-color)` }}>
+          <h2 style={{ textAlign: "center", marginBottom: "1.5rem", color: "var(--primary-color)" }}>
             Track Your Complaint Status
           </h2>
 
