@@ -280,3 +280,18 @@ SystemExit: 1
 [2026-04-26 09:43:44 +0000] [39203] [INFO] Worker exiting (pid: 39203)
 [2026-04-26 09:43:44 +0000] [39201] [INFO] Handling signal: term
 [2026-04-26 09:43:45 +0000] [39201] [INFO] Shutting down: Master
+[2026-04-27 15:04:03 +0000] [156494] [INFO] Starting gunicorn 23.0.0
+[2026-04-27 15:04:03 +0000] [156494] [INFO] Listening at: http://0.0.0.0:5000 (156494)
+[2026-04-27 15:04:03 +0000] [156494] [INFO] Using worker: sync
+[2026-04-27 15:04:03 +0000] [156495] [INFO] Booting worker with pid: 156495
+[2026-04-27 15:04:03 +0000] [156496] [INFO] Booting worker with pid: 156496
+❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69ef7ae5afe8ab5742b47bf3, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>
+❌ Error connecting to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms), Timeout: 1.5s, Topology Description: <TopologyDescription id: 69ef7ae5f02d50b0a920b8f9, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 1500.0ms, connectTimeoutMS: 1500.0ms)')>]>
+✅ Phishing model loaded
+✅ Phishing model loaded
+✅ APK model loaded
+✅ APK model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake image RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
+✅ Deepfake video RandomForest model loaded
