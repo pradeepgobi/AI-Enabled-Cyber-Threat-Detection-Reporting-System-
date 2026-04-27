@@ -84,7 +84,12 @@ const CitizenLogin = () => {
       const data = await res.json();
 
       if (data.status === "success") {
-        setSuccess("OTP sent successfully.");
+        if (data.dev_otp) {
+          setOtp(data.dev_otp);
+          setSuccess(`OTP sent successfully. Dev OTP: ${data.dev_otp}`);
+        } else {
+          setSuccess("OTP sent successfully.");
+        }
         setResendIn(60);
 
         // Auto-fill OTP in development if backend returns dev_otp

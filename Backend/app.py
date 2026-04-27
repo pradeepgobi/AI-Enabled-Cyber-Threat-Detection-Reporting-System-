@@ -76,12 +76,10 @@ default_origins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
-
-    # ✅ Netlify frontend
     "https://ai-enabled-cyber-threat-detection-reporting-system.netlify.app",
-
-    # ✅ EC2 public access (optional)
-    "http://52.66.205.11:5000"
+    "http://52.66.205.11:5000",
+    r"http://\d+\.\d+\.\d+\.\d+:5173",
+    r"http://\d+\.\d+\.\d+\.\d+:5174",
 ]
 allowed_origins = [
     origin.strip()
@@ -111,6 +109,66 @@ uploads_abs = os.path.join(app.root_path, app.config["UPLOAD_FOLDER"])
 reports_abs = os.path.join(app.root_path, REPORTS_FOLDER)
 os.makedirs(uploads_abs, exist_ok=True)
 os.makedirs(reports_abs, exist_ok=True)
+
+# -------------------------------------------------------------------
+# LOCAL LLM CONFIG (OLLAMA)
+# -------------------------------------------------------------------
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
+LOCAL_LLM_MODEL = os.environ.get("LOCAL_LLM_MODEL", "openai/gpt-3.5-turbo")
+
+
+def call_local_llm(prompt, max_tokens=256):
+    try:
+        if len(prompt) > 8000:
+            prompt = prompt[:8000] + "\n\n[Prompt truncated due to length]\n"
+
+        payload = {
+            "model": LOCAL_LLM_MODEL,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "stream": False,
+            "options": {
+                "num_predict": max_tokens,
+                "num_ctx": 2048,
+            },
+        }
+
+        resp = requests.post(f"{OLLAMA_BASE_URL}/api/chat", json=payload, timeout=180)
+
+        if resp.status_code != 200:
+            print("[LOCAL LLM] Error:", resp.status_code, resp.text[:300])
+            return f"AI Error ({resp.status_code}): {resp.text[:200]}"
+
+        data = resp.json()
+        msg = data.get("message", {})
+        content = msg.get("content", "").strip()
+        if not content:
+            return "AI response was empty."
+        return content
+
+    except requests.exceptions.ReadTimeout:
+        print("[LOCAL LLM] Read timeout – model took too long to respond")
+        return "AI Error: The local AI model took too long to respond (timeout). Try again with a simpler query."
+    except Exception as e:
+        print("[LOCAL LLM] Exception:", e)
+        return f"AI Error: {str(e)[:200]}"
+
+
+# -------------------------------------------------------------------
+# OTP DELIVERY CONFIG (DEV MODE)
+# -------------------------------------------------------------------
+DEV_OTP_MODE = os.environ.get("DEV_OTP_MODE", "true").lower() == "true"
+
+
+def send_sms_otp(phone, otp, context="verification"):
+    """
+    Development OTP delivery: no external SMS provider.
+    Always logs OTP to server console and returns True.
+    """
+    print(f"[DEV OTP] [{context}] OTP for {phone}: {otp}")
+    return True
+
 
 # -------------------------------------------------------------------
 # MONGO SETUP
@@ -1101,7 +1159,7 @@ The advice should be a clear step-by-step guide on how to:
 4. Mention the option to close the case once they are comfortable.
 """
 
-    return ask_ai(prompt)
+    return call_local_llm(prompt, max_tokens=512)
 
 
 # -------------------------------------------------------------------
@@ -1123,7 +1181,7 @@ def root():
             "member_login": "/member-login",
             "volunteer": "/api/volunteer"
         },
-        "documentation": "Production API running on AWS EC2"
+        "documentation": "For frontend access, please use http://localhost:5174"
     }), 200
 
 
@@ -1555,6 +1613,7 @@ def send_otp():
         otp_storage[phone] = otp
         print(f"🔐 Generated complaint OTP for {phone}: {otp}")
 
+        send_sms_otp(phone, otp, context="complaint verification")
         return jsonify({"status": "success", "message": "OTP sent successfully", "dev_otp": otp})
     except Exception as e:
         print("Error sending OTP:", e)
@@ -1603,6 +1662,7 @@ def send_user_otp():
         user_otp_storage[phone] = otp
         print(f"[USER OTP GENERATED] {phone} → {otp}")
 
+        send_sms_otp(phone, otp, context="user verification")
         return jsonify({"status": "success", "message": "User OTP sent successfully", "dev_otp": otp})
 
     except Exception as e:
@@ -2056,6 +2116,8 @@ if __name__ == "__main__":
     print("=" * 80)
     print("      ADVANCED CYBERSECURITY ANALYSIS PLATFORM")
     print("=" * 80)
+    print(f"\n🔌 Ollama base URL: {OLLAMA_BASE_URL}")
+    print(f"🤖 Local LLM model: {LOCAL_LLM_MODEL}")
     print("🚀 Starting Flask server on http://0.0.0.0:5000")
     print("=" * 80 + "\n")
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
