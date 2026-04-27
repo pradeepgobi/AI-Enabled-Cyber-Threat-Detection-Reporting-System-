@@ -7,3 +7,9 @@
   to = "http://52.66.205.11:5000/:splat"
   status = 200
   force = true
+
+# ⚠️ VERY IMPORTANT (ADD THIS)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
