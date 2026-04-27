@@ -105,9 +105,6 @@ export default function Women() {
     try {
       setLoading(true);
       const verifyResp = await axios.post(`${import.meta.env.VITE_API_URL}/verify-otp`, { phone, otp: formData.otp });
-        phone,
-        otp: formData.otp
-      });
 
       if (!verifyResp.data || !verifyResp.data.verified) {
         alert("OTP invalid. Try again.");
@@ -196,7 +193,7 @@ export default function Women() {
   });
 
   doc.setFontSize(16);
-  doc.text("FIRST INFORMATION REPORT (FIR)`, pageWidth / 2, 88, {
+  doc.text("FIRST INFORMATION REPORT (FIR)", pageWidth / 2, 88, {
     align: "center",
   });
 
@@ -306,7 +303,7 @@ export default function Women() {
   y += 20;
   doc.setFontSize(10);
 
-  doc.text("(Digitally Signed by Complainant)`, 20, y);
+  doc.text("(Digitally Signed by Complainant)", 20, y);
   doc.line(pageWidth - 140, y - 5, pageWidth - 20, y - 5);
 
   doc.text("Authorized Signatory / Duty Officer", pageWidth - 140, y + 10);
