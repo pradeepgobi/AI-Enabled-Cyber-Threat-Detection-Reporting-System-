@@ -81,12 +81,11 @@ const CitizenLogin = () => {
         }),
       });
 
-      const data = await res.json();
+      const data = (await res.json()) || {};
 
-      if (data.status === "success") {
-        if (data.dev_otp) {
-          setOtp(data.dev_otp);
-          setSuccess(`OTP sent successfully. Dev OTP: ${data.dev_otp}`);
+      if (data?.status === "success") {
+          setOtp(data?.dev_otp);
+
         } else {
           setSuccess("OTP sent successfully.");
         }
